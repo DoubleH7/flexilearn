@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 20 git ls-remote https://github.com/DoubleH7/flexilearn.git)"
+    ]
+  }
+}

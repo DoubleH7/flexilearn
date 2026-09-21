@@ -1,0 +1,61 @@
+# The smallest complete flexilearn experiment.
+#
+#   flexilearn examples/minimal/config.yml --definitions examples/minimal/definitions
+#
+# Every `type:` below is a registry key. `linear`, `sgd` and `mse` are built in;
+# `synthetic_regression` and `supervised_regression` come from
+# definitions/synthetic.py, which the --definitions flag imports at startup.
+# Fields listed under a `type:` are passed to that component's constructor.
+
+experiment:
+  name: minimal-regression
+  seed: 1234
+  # Set to true to pick up the newest checkpoint for this exact config.
+  attempt_resume: false
+
+curriculum:
+  fit:
+    type: supervised_regression
+    iterations: 200          # loop() calls per epoch
+    epochs: 1
+    checkpointing_interval: 100   # in group update windows; 0 disables
+
+groups:
+  # A group named `default` is required. It owns one ModuleDict + one optimizer.
+  default:
+    models:
+      main:
+        type: linear         # torch.nn.Linear
+        in_features: 8
+        out_features: 4
+    optimizer:
+      type: sgd
+      lr: 0.05
+    settings:
+      grad_accumulation: 2   # step the optimizer every 2 update() calls
+      device: cpu            # cuda / mps / tpu also accepted
+      is_trainable: true
+
+data_sources:
+  main:
+    loader:
+      batch_size: 16
+      num_workers: 0         # 0 loads in the main process
+      shuffle: false         # seeded per-epoch when enabled
+    dataset:
+      type: synthetic_regression
+      in_features: 8
+      out_features: 4
+      seed: 7
+    # preparations: []       # optional pipeline of registered Stage transforms
+
+logging:
+  # MLflow tracking. The default store is a local ./mlruns directory — nothing
+  # leaves the machine. Set enabled: false to turn tracking off entirely (MLflow
+  # is then never even imported).
+  enabled: true
+  tracking_uri: ./mlruns
+  scalar_interval: 10        # log train/loss every 10 steps
+  gradient_interval: 0       # 0 disables gradient-norm logging
+  histogram_interval: 0
+  log_git_info: false        # would tag git sha/branch and archive uv.lock

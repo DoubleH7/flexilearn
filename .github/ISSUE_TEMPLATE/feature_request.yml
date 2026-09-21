@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest a capability for the framework
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check [docs/dev/ROADMAP.md](https://github.com/DoubleH7/flexilearn/blob/main/docs/dev/ROADMAP.md)
+        first — it may already be planned.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the experiment or workflow that is awkward today.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would it look like?
+      description: >
+        If it touches configuration, sketch the YAML. If it touches the extension
+        surface, sketch the decorator or method signature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: >
+        Can this already be done with a custom component in `definitions/`? Flexilearn
+        deliberately keeps experiment-specific logic out of the framework.

@@ -1,0 +1,51 @@
+name: Bug report
+description: Something in the framework behaves incorrectly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please check
+        [docs/dev/KNOWN_ISSUES.md](https://github.com/DoubleH7/flexilearn/blob/main/docs/dev/KNOWN_ISSUES.md)
+        first — the issue may already be tracked there.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How can it be reproduced?
+      description: >
+        The smallest config and component code that shows the problem. Starting from
+        `examples/minimal/` and changing one thing is ideal.
+      render: yaml
+    validations:
+      required: true
+
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Traceback or log output
+      render: shell
+
+  - type: input
+    id: version
+    attributes:
+      label: Flexilearn version or commit
+      placeholder: "0.1.0, or a commit SHA"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Python, PyTorch, and OS
+      placeholder: "Python 3.12.3, torch 2.9.0, Ubuntu 24.04, CUDA 12.8"
+    validations:
+      required: true

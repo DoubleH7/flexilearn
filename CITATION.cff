@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: "Flexilearn: a configuration-driven PyTorch training framework"
+message: "If you use this software, please cite it using these metadata."
+type: software
+authors:
+  - given-names: Hesam
+    family-names: Haddad
+    alias: TheDoubleH
+    orcid: "https://orcid.org/0009-0006-5468-6484"
+repository-code: "https://github.com/DoubleH7/flexilearn"
+url: "https://github.com/DoubleH7/flexilearn"
+abstract: >-
+  Flexilearn is a modular, configuration-driven training framework built on
+  PyTorch. Models, optimizers, datasets, preprocessing stages, losses and
+  training tasks are registered with decorators and wired together entirely
+  from a single config.yml, so swapping a component requires no code changes.
+  It provides config-hash run identity, selective checkpointing, gradient
+  accumulation, MLflow experiment tracking and a simulation-as-data-source
+  abstraction for closed-loop evaluation.
+keywords:
+  - pytorch
+  - machine-learning
+  - training-framework
+  - reproducible-research
+  - experiment-tracking
+  - mlflow
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-09-21"

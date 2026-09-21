@@ -1,0 +1,39 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets — copy .env.example to .env and fill it in
+.env
+
+# Tool caches, plus any dot-cache a component writes (statistics, normalizers, …)
+.cache/
+.*_cache/
+
+# Checkpoints and exports (outputs/<config-hash>/)
+outputs/
+
+# runtime logs (written by flexilearn/monitor.py)
+logs/
+
+# mlflow local tracking store
+mlruns/
+mlflow.db
+
+# Downloaded datasets. The leading slash anchors this to the repository root so
+# a definitions/data/ package is NOT ignored.
+/data/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# AI assistant local settings (CLAUDE.md itself is tracked)
+.claude/settings.local.json
